@@ -22,7 +22,7 @@ class ItemController < ApplicationController
     get '/items/:id/edit' do
         @item = Item.find(params[:id])
 
-        erb :update
+        erb :'/items/update'
     end
 
     patch '/items/:id' do
