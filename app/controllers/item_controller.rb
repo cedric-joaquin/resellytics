@@ -6,6 +6,10 @@ class ItemController < ApplicationController
 
         erb :'/items/index'
     end
+    
+    get '/items/new' do
+        erb :'/items/create'
+    end
 
     get '/items/:id' do
         redirect '/' if !logged_in?
@@ -13,5 +17,6 @@ class ItemController < ApplicationController
 
         erb :'/items/show'
     end
+
 
 end
