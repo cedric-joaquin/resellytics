@@ -23,6 +23,7 @@ class ItemController < ApplicationController
         date = DateTime.parse(params[:purchase_date]).to_date
         params[:purchase_date] = date.strftime('%B %d, %Y')
         item = Item.create(params)
+        User.find(session[:user_id]).items << item
         redirect "/items/#{item.id}"
     end
 
