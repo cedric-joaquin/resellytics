@@ -26,7 +26,17 @@ class ItemController < ApplicationController
     end
 
     patch '/items/:id' do
+        item = Item.find(params[:id])
+        item.update(
+            name: params[:name],
+            brand: params[:brand],
+            size: params[:size],
+            item_cost: params[:item_cost],
+            purchased_from: params[:purchased_from],
+            purchase_date: params[:purchase_date]
+        )
 
+        redirect "/items/#{item.id}"
     end
 
     post '/items' do
