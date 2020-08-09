@@ -47,5 +47,12 @@ class ItemController < ApplicationController
         redirect "/items/#{item.id}"
     end
 
+    delete '/items/:id' do
+        Item.find(params[:id]).destroy
+
+        redirect '/items'
+    end
+
+
 
 end
