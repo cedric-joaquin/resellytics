@@ -24,7 +24,8 @@ class ItemController < ApplicationController
 
     get '/items/:id/edit' do
         @item = Item.find(params[:id])
-
+        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
+        
         erb :'/items/update'
     end
 
