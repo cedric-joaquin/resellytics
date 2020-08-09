@@ -8,5 +8,6 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :purchased_from
       t.float :item_cost
       t.timestamps
+    end
   end
 end
