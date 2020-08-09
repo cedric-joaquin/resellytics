@@ -8,7 +8,7 @@ class ItemController < ApplicationController
     end
     
     get '/items/new' do
-        redirect '/' if !logged_in
+        redirect '/' if !logged_in?
         erb :'/items/create'
     end
 
