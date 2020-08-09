@@ -4,6 +4,16 @@ class UserController < ApplicationController
         erb :login
     end
 
+    post '/login' do
+        user = User.find_by(username: params[:username])
+
+        if user && user.authenticate(params[:password])
+            redirect '/dashboard'
+        else
+            redirect '/login'
+        end
+    end
+
     get '/signup' do
         erb :signup
     end
