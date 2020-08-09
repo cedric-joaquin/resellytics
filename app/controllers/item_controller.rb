@@ -20,8 +20,10 @@ class ItemController < ApplicationController
     end
 
     post '/items' do
-
-
+        date = DateTime.parse(params[:purchase_date]).to_date
+        params[:purchase_date] = date.strftime('%B %d, %Y')
+        item = Item.create(params)
+        redirect "/items/#{item.id}"
     end
 
 
