@@ -18,5 +18,10 @@ class ItemController < ApplicationController
         erb :'/items/show'
     end
 
+    post '/items' do
+
+
+    end
+
 
 end
