@@ -14,7 +14,10 @@ class ItemController < ApplicationController
 
     get '/items/:id' do
         redirect '/' if !logged_in?
+
         @item = Item.find(params[:id])
+        #Redirects back to inventory page if item from URL does not belong to logged in user
+        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
 
         erb :'/items/show'
     end
