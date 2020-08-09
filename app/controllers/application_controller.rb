@@ -10,19 +10,15 @@ class ApplicationController < Sinatra::Base
   end
 
   get '/' do
-    if logged_in?
-      redirect '/dashboard'
-    else
-      erb :welcome
-    end
+    redirect '/dashboard' if logged_in?
+
+    erb :welcome
   end
 
   get '/dashboard' do
-    if logged_in?
-      erb :dashboard
-    else
-      redirect '/login'
-    end
+    redirect '/login' if !logged_in?
+
+    erb :dashboard
   end
 
   helpers do
