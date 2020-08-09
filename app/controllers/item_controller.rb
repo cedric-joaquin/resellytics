@@ -7,4 +7,11 @@ class ItemController < ApplicationController
         erb :'/items/index'
     end
 
+    get '/items/:id' do
+        redirect '/' if !logged_in?
+        @item = Item.find(params[:id])
+
+        erb :'/items/show'
+    end
+
 end
