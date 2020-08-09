@@ -17,6 +17,7 @@ class ApplicationController < Sinatra::Base
 
   get '/dashboard' do
     redirect '/' if !logged_in?
+    @user = User.find(session[:user_id])
 
     erb :dashboard
   end
