@@ -12,7 +12,7 @@ user = User.create(
         brand: Faker::Company.name,
         size: rand(7..12).to_s,
         purchased_from: Faker::Address.city,
-        item_cost: rand(1.0..100.0)
+        item_cost: rand(1.0..100.0).round(2)
     )
     user.items << item
 end
