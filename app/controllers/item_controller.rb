@@ -19,6 +19,16 @@ class ItemController < ApplicationController
         erb :'/items/show'
     end
 
+    get '/items/:id/edit' do
+        @item = Item.find(params[:id])
+
+        erb :update
+    end
+
+    patch '/items/:id' do
+
+    end
+
     post '/items' do
         date = DateTime.parse(params[:purchase_date]).to_date
         params[:purchase_date] = date.strftime('%B %d, %Y')
