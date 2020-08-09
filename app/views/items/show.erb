@@ -3,3 +3,4 @@
 <p>Size <%= @item.size %></p>
 <p>Cost: $<%= @item.item_cost %></p>
 <p>Purchased from <strong><%= @item.purchased_from %></strong> on <strong><%= @item.purchase_date %></strong></p>
+<h3><a href="/items/<%= @item.id %>/edit">Edit Item</a> <a href="/items/<%= @item.id %>/delete">Delete Item</a></h3>
