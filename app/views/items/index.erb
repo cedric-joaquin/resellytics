@@ -1,6 +1,6 @@
 <h2>Inventory</h2>
 <ul>
 <% @items.each do |item| %>
-    <li><a href="/<%= item.id %>"><%= item.name %></a></li>
+    <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
 <% end %>
 </ul>
