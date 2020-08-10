@@ -7,5 +7,6 @@ end
 use Rack::MethodOverride
 
 use ItemController
+use ExpenseController
 use UserController
 run ApplicationController
