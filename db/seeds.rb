@@ -37,3 +37,27 @@ end
     )
     user2.items << item
 end
+
+5.times do
+    date = Faker::Date.in_date_period
+    expense = Expense.create(
+        name: Faker::Commerce.product_name,
+        category: Faker::Company.name,
+        purchased_from: Faker::Address.city,
+        cost: rand(1.0..100.0).round(2),
+        purchase_date: date.strftime('%B %d, %Y')
+    )
+    user1.expenses << expense
+end
+
+5.times do
+    date = Faker::Date.in_date_period
+    expense = Expense.create(
+        name: Faker::Commerce.product_name,
+        category: Faker::Company.name,
+        purchased_from: Faker::Address.city,
+        cost: rand(1.0..100.0).round(2),
+        purchase_date: date.strftime('%B %d, %Y')
+    )
+    user2.expenses << expense
+end
