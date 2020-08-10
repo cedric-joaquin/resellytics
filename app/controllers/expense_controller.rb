@@ -1,62 +1,58 @@
 class ExpenseController < ApplicationController
 
-    get '/items' do
+    get '/expenses' do
         redirect '/' if !logged_in?
-        @items = User.find(session[:user_id]).items
+        @expenses = User.find(session[:user_id]).expenses
 
-        erb :'/items/index'
+        erb :'/expenses/index'
     end
     
-    get '/items/new' do
+    get '/expenses/new' do
         redirect '/' if !logged_in?
-        erb :'/items/create'
+        erb :'/expenses/create'
     end
 
-    get '/items/:id' do
+    get '/expenses/:id' do
         redirect '/' if !logged_in?
 
-        @item = Item.find(params[:id])
-        #Redirects back to inventory page if item from URL does not belong to logged in user
-        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
+        @expense = Expense.find(params[:id])
+        #Redirects back to inventory page if expense from URL does not belong to logged in user
+        redirect '/expenses' if !User.find(session[:user_id]).expenses.include?(@expense)
 
-        erb :'/items/show'
+        erb :'/expenses/show'
     end
 
-    get '/items/:id/edit' do
-        @item = Item.find(params[:id])
-        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
+    get '/expenses/:id/edit' do
+        @expense = Expense.find(params[:id])
+        redirect '/expenses' if !User.find(session[:user_id]).expenses.include?(@expense)
         
-        erb :'/items/update'
+        erb :'/expenses/update'
     end
 
-    patch '/items/:id' do
-        item = Item.find(params[:id])
-        item.update(
+    patch '/expenses/:id' do
+        expense = Expense.find(params[:id])
+        expense.update(
             name: params[:name],
-            brand: params[:brand],
-            size: params[:size],
-            item_cost: params[:item_cost],
+            category: params[:category],
+            cost: params[:cost],
             purchased_from: params[:purchased_from],
             purchase_date: params[:purchase_date]
         )
 
-        redirect "/items/#{item.id}"
+        redirect "/expenses/#{expense.id}"
     end
 
-    post '/items' do
+    post '/expenses' do
         date = DateTime.parse(params[:purchase_date]).to_date
         params[:purchase_date] = date.strftime('%B %d, %Y')
-        item = Item.create(params)
-        User.find(session[:user_id]).items << item
-        redirect "/items/#{item.id}"
+        expense = Expense.create(params)
+        User.find(session[:user_id]).expenses << expense
+        redirect "/expenses/#{expense.id}"
     end
 
-    delete '/items/:id' do
-        Item.find(params[:id]).destroy
+    delete '/expenses/:id' do
+        Expense.find(params[:id]).destroy
 
-        redirect '/items'
+        redirect '/expenses'
     end
-
-
-
 end
