@@ -36,7 +36,7 @@ class ExpenseController < ApplicationController
             category: params[:category],
             cost: params[:cost],
             purchased_from: params[:purchased_from],
-            purchase_date: params[:purchase_date]
+            purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
         )
 
         redirect "/expenses/#{expense.id}"

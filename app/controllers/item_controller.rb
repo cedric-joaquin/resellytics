@@ -37,9 +37,8 @@ class ItemController < ApplicationController
             size: params[:size],
             cost: params[:cost],
             purchased_from: params[:purchased_from],
-            purchase_date: params[:purchase_date]
+            purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
         )
-
         redirect "/items/#{item.id}"
     end
 
