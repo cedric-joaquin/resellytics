@@ -19,7 +19,7 @@ user2 = User.create(
         brand: Faker::Company.name,
         size: rand(7..12).to_s,
         purchased_from: Faker::Address.city,
-        item_cost: rand(1.0..100.0).round(2),
+        cost: rand(1.0..100.0).round(2),
         purchase_date: date.strftime('%B %d, %Y')
     )
     user1.items << item
@@ -32,7 +32,7 @@ end
         brand: Faker::Company.name,
         size: rand(7..12).to_s,
         purchased_from: Faker::Address.city,
-        item_cost: rand(1.0..100.0).round(2),
+        cost: rand(1.0..100.0).round(2),
         purchase_date: date.strftime('%B %d, %Y')
     )
     user2.items << item
