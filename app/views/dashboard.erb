@@ -1,6 +1,6 @@
 <h2>Welcome, <%= @user.username%></h2>
 <ul>
-<li><a href="/items">Inventory:</a> $<%= Item.total.to_s %></li>
-<li><a href="/expenses">Expenses:</a> $<%= Expense.total.to_s %></li>
+<li><a href="/items">Inventory:</a> $<%= Item.total(session[:user_id]).to_s %></li>
+<li><a href="/expenses">Expenses:</a> $<%= Expense.total(session[:user_id]).to_s %></li>
 </ul><br>
 <a href="/logout">Log Out</a>
