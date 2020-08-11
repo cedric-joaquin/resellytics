@@ -1,4 +1,4 @@
-<h2>Inventory (Total: $<%= sprintf("%.2f", Item.total) %>)</h2>
+<h2>Inventory (Total: $<%= sprintf("%.2f", Item.total(session[:user_id])) %>)</h2>
 <ul>
 <% @items.each do |item| %>
     <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
