@@ -12,7 +12,7 @@
 <p><label for="purchased_from">Purchased From</label>
 <input type="text" name="purchased_from" id="purchased_from" required="true" value="<%= @item.purchased_from %>"></p>
 <p><label for="purchase_date">Purchase Date</label>
-<input type="date" name="purchase_date" id="purchase_date" required="true" value="Purchase Date"></p>
+<input type="date" name="purchase_date" id="purchase_date" required="true" value="<%= @item.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
 <input type="submit" value="Update Item">
 </form>
 <form method="POST" action="/items/<%= @item.id %>">
