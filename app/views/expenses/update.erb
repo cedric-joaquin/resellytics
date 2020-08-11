@@ -6,7 +6,7 @@
 <p><label for="brand">Category</label>
 <input type="text" name="category" id="category" required="true" value="<%= @expense.category %>"></p>
 <p><label for="cost">Expense Cost</label>
-<input type="number" name="cost" id="cost" required="true" value="$<%= @expense.cost %>"></p>
+<input type="number" step="0.01" name="cost" id="cost" required="true" value="$<%= @expense.cost %>"></p>
 <p><label for="purchased_from">Purchased From</label>
 <input type="text" name="purchased_from" id="purchased_from" required="true" value="<%= @expense.purchased_from %>"></p>
 <p><label for="purchase_date">Purchase Date</label>
