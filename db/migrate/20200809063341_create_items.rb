@@ -6,7 +6,7 @@ class CreateItems < ActiveRecord::Migration[5.2]
       t.string :brand
       t.string :size
       t.string :purchased_from
-      t.float :item_cost
+      t.float :cost
       t.integer :user_id
       t.timestamps
     end
