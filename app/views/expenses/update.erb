@@ -2,15 +2,15 @@
 <form method="POST" action="/expenses/<%= @expense.id %>">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
 <p><label for="name">Expense Name</label>
-<input type="text" name="name" id="name" value="<%= @expense.name %>"></p>
+<input type="text" name="name" id="name" required="true" value="<%= @expense.name %>"></p>
 <p><label for="brand">Category</label>
-<input type="text" name="category" id="category" value="<%= @expense.category %>"></p>
+<input type="text" name="category" id="category" required="true" value="<%= @expense.category %>"></p>
 <p><label for="cost">Expense Cost</label>
-<input type="number" name="cost" id="cost" value="$<%= @expense.cost %>"></p>
+<input type="number" name="cost" id="cost" required="true" value="$<%= @expense.cost %>"></p>
 <p><label for="purchased_from">Purchased From</label>
-<input type="text" name="purchased_from" id="purchased_from" value="<%= @expense.purchased_from %>"></p>
+<input type="text" name="purchased_from" id="purchased_from" required="true" value="<%= @expense.purchased_from %>"></p>
 <p><label for="purchase_date">Purchase Date</label>
-<input type="date" name="purchase_date" id="purchase_date" value="Purchase Date"></p>
+<input type="date" name="purchase_date" id="purchase_date" required="true" value="Purchase Date"></p>
 <input type="submit" value="Update Item">
 </form>
 <form method="POST" action="/expenses/<%= @expense.id %>">

@@ -1,14 +1,14 @@
 <h2>Add an Expense</h2>
 <form method="POST" action="/expenses">
 <p><label for="name"></label>
-<input type="text" name="name" id="name" placeholder="Expense Name"></p>
+<input type="text" name="name" id="name" required="true" placeholder="Expense Name"></p>
 <p><label for="category"></label>
-<input type="text" name="category" id="category" placeholder="Category"></p>
+<input type="text" name="category" id="category" required="true" placeholder="Category"></p>
 <p><label for="cost"></label>
-<input type="number" name="cost" id="cost" placeholder="Expense Cost"></p>
+<input type="number" name="cost" id="cost" required="true" placeholder="Expense Cost"></p>
 <p><label for="purchased_from"></label>
-<input type="text" name="purchased_from" id="purchased_from" placeholder="Purchased From"></p>
+<input type="text" name="purchased_from" id="purchased_from" required="true" placeholder="Purchased From"></p>
 <p><label for="purchase_date"></label>
-<input type="date" name="purchase_date" id="purchase_date" placeholder="Purchase Date"></p>
+<input type="date" name="purchase_date" id="purchase_date" required="true" placeholder="Purchase Date"></p>
 <input type="submit" value="Add Expense">
 </form>
