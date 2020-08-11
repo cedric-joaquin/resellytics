@@ -35,7 +35,7 @@ class ItemController < ApplicationController
             name: params[:name],
             brand: params[:brand],
             size: params[:size],
-            item_cost: params[:item_cost],
+            cost: params[:cost],
             purchased_from: params[:purchased_from],
             purchase_date: params[:purchase_date]
         )
