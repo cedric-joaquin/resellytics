@@ -1,4 +1,4 @@
-<h2>Expenses</h2>
+<h2>Expenses (Total: $<%= sprintf("%.2f", Expense.total) %>)</h2>
 <ul>
 <% @expenses.each do |expense| %>
     <li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
