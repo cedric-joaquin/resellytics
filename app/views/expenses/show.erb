@@ -1,5 +1,5 @@
 <h2><%= @expense.name %></h2>
 <h3><%= @expense.category %></h3><br>
-<p>Cost: $<%= @expense.cost %></p>
+<p>Cost: $<%= sprintf("%.2f", @expense.cost) %></p>
 <p>Purchased from <strong><%= @expense.purchased_from %></strong> on <strong><%= @expense.purchase_date %></strong></p>
 <h3><a href="/expenses/<%= @expense.id %>/edit">Edit Expense</a>
