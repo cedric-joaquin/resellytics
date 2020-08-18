@@ -1,4 +1,10 @@
-<h2><%= @expense.name %></h2>
+<div class="nav">
+    <h2><%= @expense.name %></h2>
+    <a href="/logout">Log Out</a>
+    <a href="/expenses">Expenses</a>
+    <a href="/items">Inventory</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
 <form method="POST" action="/expenses/<%= @expense.id %>">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
 <p><label for="name">Expense Name</label>

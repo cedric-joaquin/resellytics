@@ -1,5 +1,11 @@
 <% if !@expenses.empty? %>
-<h2>Expenses (Total: $<%= sprintf("%.2f", Expense.total(session[:user_id])) %>)</h2>
+<div class="nav">
+    <h2>Expenses (Total: $<%= sprintf("%.2f", Expense.total(session[:user_id])) %>)</h2>
+    <a href="/logout">Log Out</a>
+    <a href="/expenses">Expenses</a>
+    <a href="/items">Inventory</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
 <ul>
 <% @expenses.each do |expense| %>
     <li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
@@ -7,6 +13,12 @@
 </ul><br>
 <p><a href="/expenses/new">Add Expense</a></p>
 <% else %>
-<h2>Expenses (Total: $0)</h2>
+<div class="nav">
+    <h2>Expenses (Total: $0)</h2>
+    <a href="/logout">Log Out</a>
+    <a href="/expenses">Expenses</a>
+    <a href="/items">Inventory</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
 <p>No expenses added, please <a href="/expenses/new">click here</a> to add an expense.</p>
 <% end %>
