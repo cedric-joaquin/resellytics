@@ -10,7 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_09_040728) do
+ActiveRecord::Schema.define(version: 2020_08_10_035252) do
+
+  create_table "expenses", force: :cascade do |t|
+    t.string "name"
+    t.float "cost"
+    t.string "category"
+    t.string "purchased_from"
+    t.string "purchase_date"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "purchase_date"
+    t.string "name"
+    t.string "brand"
+    t.string "size"
+    t.string "purchased_from"
+    t.float "cost"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "username"
