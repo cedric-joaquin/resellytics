@@ -4,6 +4,6 @@ class Item < ActiveRecord::Base
     def self.total(user_id)
         Item.all.select{|i|i.user_id == user_id}.collect do |item|
             item.cost
-        end.inject(:+)
+        end.inject(0, :+)
     end
 end
