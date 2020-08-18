@@ -23,7 +23,6 @@ class UserController < ApplicationController
         user = User.new(params)
         if !User.all.collect{|u|u.username}.include?(params[:username]) && !User.all.collect{|u|u.email}.include?(params[:email]) && user.save
             session[:user_id] = user.id
-            binding.pry
             redirect '/dashboard'
         else
             erb :signup
