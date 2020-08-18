@@ -1,19 +1,19 @@
 class ItemController < ApplicationController
 
     get '/items' do
-        redirect '/' if !logged_in?
+        redirect?
         @items = User.find(session[:user_id]).items
 
         erb :'/items/index'
     end
     
     get '/items/new' do
-        redirect '/' if !logged_in?
+        redirect?
         erb :'/items/create'
     end
 
     get '/items/:id' do
-        redirect '/' if !logged_in?
+        redirect?
 
         @item = Item.find(params[:id])
         #Redirects back to inventory page if item from URL does not belong to logged in user
@@ -23,6 +23,7 @@ class ItemController < ApplicationController
     end
 
     get '/items/:id/edit' do
+        redirect?
         @item = Item.find(params[:id])
         redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
         
