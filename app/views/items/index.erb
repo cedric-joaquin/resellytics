@@ -1,5 +1,11 @@
 <% if !@items.empty?%>
-<h2>Inventory (Total: $<%= sprintf("%.2f", Item.total(session[:user_id])) %>)</h2>
+<div class="nav">
+    <h2>Inventory (Total: $<%= sprintf("%.2f", Item.total(session[:user_id])) %>)</h2>
+    <a href="/logout">Log Out</a>
+    <a href="/expenses">Expenses</a>
+    <a href="/items">Inventory</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
 <ul>
 <% @items.each do |item| %>
     <li><a href="/items/<%= item.id %>"><%= item.name %></a></li>
@@ -7,6 +13,11 @@
 </ul><br>
 <p><a href="/items/new">Add Item</a></p>
 <% else %>
-<h2>Inventory (Total: $0)</h2>
+<div class="nav">
+    <h2>Inventory (Total: $0)</h2>
+    <a href="/logout">Log Out</a>
+    <a href="/expenses">Expenses</a>
+    <a href="/dashboard">Dashboard</a>
+</div>
 <p>No items added, please <a href="/items/new">click here</a> to add an item.</p>
 <% end %>
