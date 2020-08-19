@@ -17,7 +17,7 @@
 <input type="text" name="purchased_from" id="purchased_from" required="true" value="<%= @expense.purchased_from %>"></p>
 <p><label for="purchase_date">Purchase Date</label>
 <input type="date" name="purchase_date" id="purchase_date" required="true" value="<%= @expense.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
-<input type="submit" value="Update Item">
+<input type="submit" value="Update Expense">
 </form>
 <form method="POST" action="/expenses/<%= @expense.id %>">
 <input type="hidden" name="_method" value="delete">
