@@ -81,18 +81,18 @@
       .container {
         display: flex;
         flex-flow: row wrap;
-        justify-content: space-evenly;
-        align-content: flex-start;
+        justify-content: flex-start;
         padding-top: 18px;
       }
   
       .item {
-        border: 1px solid #000;
+        border: 0px solid #000;
         border-radius: 10px;
-        box-shadow: 2px 2px 2.5px 1px #333;
+        box-shadow: 0 0 10px #333;
         width: 200px;
+        height: auto;
         padding: 10px;
-        margin: 10px 5px;
+        margin: 10px 10px;
       }
 
       .item h2 {
