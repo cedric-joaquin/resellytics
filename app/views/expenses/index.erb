@@ -6,12 +6,18 @@
     <a href="/items">Inventory</a>
     <a href="/dashboard">Dashboard</a>
 </div>
-<ul>
-<% @expenses.each do |expense| %>
-    <li><a href="/expenses/<%= expense.id %>"><%= expense.name %></a></li>
-<% end %>
-</ul><br>
-<p><a href="/expenses/new">Add Expense</a></p>
+<p><a class="options" href="/expenses/new">Add Expense</a></p>
+<div class="container">
+    <% @expenses.each do |expense| %>
+        <a href="/expenses/<%= expense.id %>">
+            <div class="item">
+                <h2><%= expense.name %></h2>
+                <p><h3><%= expense.category %></h3></p>
+                <p>Cost: $<%= sprintf("%.2f",expense.cost) %></p>
+            </div>
+        </a>
+    <% end %>
+</div>
 <% else %>
 <div class="nav">
     <h2>Expenses (Total: $0)</h2>
