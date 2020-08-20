@@ -27,6 +27,7 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
+    #Logs in user and redirects to their dashboard
     def login(user)
       session[:user_id] = user.id
       redirect '/dashboard'
@@ -42,8 +43,9 @@ class ApplicationController < Sinatra::Base
       end
     end
 
-    def total(query)
-      current_user.send(query).collect{|item| item.cost}.inject(0,:+)
+    #Returns total cost for object being passed into the method.
+    def total(object)
+      current_user.send(object).collect{|item| item.cost}.inject(0,:+)
     end
   end
 
