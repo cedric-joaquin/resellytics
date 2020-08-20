@@ -56,7 +56,4 @@ class ItemController < ApplicationController
 
         redirect '/items'
     end
-
-
-
 end
