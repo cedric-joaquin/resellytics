@@ -17,7 +17,7 @@ class ApplicationController < Sinatra::Base
 
   get '/dashboard' do
     redirect?
-    @user = User.find(session[:user_id])
+    @user = current_user
 
     erb :dashboard
   end
@@ -28,13 +28,17 @@ class ApplicationController < Sinatra::Base
     end
 
     def current_user
-      User.find(session[:user_id])
+      User.find_by(id: session[:user_id])
     end
 
     def redirect?
       if !logged_in?
         redirect '/'
       end
+    end
+
+    def total(query)
+      current_user.send(query).collect{|item| item.cost}.inject(0,:+)
     end
   end
 
