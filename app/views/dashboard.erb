@@ -5,6 +5,6 @@
     <a href="/items">Inventory</a>
     <a href="/dashboard">Dashboard</a>
 </div><ul>
-<li><a href="/items">Inventory:</a> $<%= total("items").to_s %></li>
-<li><a href="/expenses">Expenses:</a> $<%= total("expenses").to_s %></li>
+<li><a href="/items">Inventory:</a> $<%= sprintf("%.2f", total("items")) %></li>
+<li><a href="/expenses">Expenses:</a> $<%= sprintf("%.2f", total("expenses")) %></li>
 </ul><br>
