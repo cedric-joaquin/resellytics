@@ -2,7 +2,7 @@ class ItemController < ApplicationController
 
     get '/items' do
         redirect?
-        @items = User.find(session[:user_id]).items
+        @items = current_user.items
 
         erb :'/items/index'
     end
@@ -17,7 +17,7 @@ class ItemController < ApplicationController
 
         @item = Item.find(params[:id])
         #Redirects back to inventory page if item from URL does not belong to logged in user
-        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
+        redirect '/items' if !current_user.items.include?(@item)
 
         erb :'/items/show'
     end
@@ -25,7 +25,7 @@ class ItemController < ApplicationController
     get '/items/:id/edit' do
         redirect?
         @item = Item.find(params[:id])
-        redirect '/items' if !User.find(session[:user_id]).items.include?(@item)
+        redirect '/items' if !current_user.items.include?(@item)
         
         erb :'/items/update'
     end
@@ -47,7 +47,7 @@ class ItemController < ApplicationController
         date = DateTime.parse(params[:purchase_date]).to_date
         params[:purchase_date] = date.strftime('%B %d, %Y')
         item = Item.create(params)
-        User.find(session[:user_id]).items << item
+        current_user.items << item
         redirect "/items/#{item.id}"
     end
 

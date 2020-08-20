@@ -2,7 +2,7 @@ class ExpenseController < ApplicationController
 
     get '/expenses' do
         redirect?
-        @expenses = User.find(session[:user_id]).expenses
+        @expenses = current_user.expenses
 
         erb :'/expenses/index'
     end
@@ -17,7 +17,7 @@ class ExpenseController < ApplicationController
 
         @expense = Expense.find(params[:id])
         #Redirects back to inventory page if expense from URL does not belong to logged in user
-        redirect '/expenses' if !User.find(session[:user_id]).expenses.include?(@expense)
+        redirect '/expenses' if !current_user.expenses.include?(@expense)
 
         erb :'/expenses/show'
     end
@@ -25,7 +25,7 @@ class ExpenseController < ApplicationController
     get '/expenses/:id/edit' do
         redirect?
         @expense = Expense.find(params[:id])
-        redirect '/expenses' if !User.find(session[:user_id]).expenses.include?(@expense)
+        redirect '/expenses' if !current_user.expenses.include?(@expense)
         
         erb :'/expenses/update'
     end
@@ -47,7 +47,7 @@ class ExpenseController < ApplicationController
         date = DateTime.parse(params[:purchase_date]).to_date
         params[:purchase_date] = date.strftime('%B %d, %Y')
         expense = Expense.create(params)
-        User.find(session[:user_id]).expenses << expense
+        current_user.expenses << expense
         redirect "/expenses/#{expense.id}"
     end
 
