@@ -15,23 +15,23 @@ class ItemController < ApplicationController
     get '/items/:id' do
         redirect?
 
-        @item = Item.find(params[:id])
+        @item = current_user.items.find_by(id: params[:id])
         #Redirects back to inventory page if item from URL does not belong to logged in user
-        redirect '/items' if !current_user.items.include?(@item)
+        redirect '/items' if !@item
 
         erb :'/items/show'
     end
 
     get '/items/:id/edit' do
         redirect?
-        @item = Item.find(params[:id])
-        redirect '/items' if !current_user.items.include?(@item)
+        @item = current_user.items.find_by(id: params[:id])
+        redirect '/items' if !@item
         
         erb :'/items/update'
     end
 
     patch '/items/:id' do
-        item = Item.find(params[:id])
+        item = Item.find_by(id: params[:id])
         item.update(
             name: params[:name],
             brand: params[:brand],
@@ -52,7 +52,8 @@ class ItemController < ApplicationController
     end
 
     delete '/items/:id' do
-        Item.find(params[:id]).destroy
+        binding.pry
+        Item.find_by(id: params[:id]).destroy
 
         redirect '/items'
     end
