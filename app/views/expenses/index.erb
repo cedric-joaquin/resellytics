@@ -1,6 +1,6 @@
 <% if !@expenses.empty? %>
 <div class="nav">
-    <h2>Expenses (Total: $<%= sprintf("%.2f", Expense.total(session[:user_id])) %>)</h2>
+    <h2>Expenses (Total: $<%= sprintf("%.2f", total("expenses")) %>)</h2>
     <a href="/logout">Log Out</a>
     <a href="/expenses">Expenses</a>
     <a href="/items">Inventory</a>
