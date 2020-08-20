@@ -15,7 +15,7 @@ class ExpenseController < ApplicationController
     get '/expenses/:id' do
         redirect?
 
-        @expense = Expense.find(params[:id])
+        @expense = Expense.find_by(params[:id])
         #Redirects back to inventory page if expense from URL does not belong to logged in user
         redirect '/expenses' if !current_user.expenses.include?(@expense)
 
@@ -24,14 +24,14 @@ class ExpenseController < ApplicationController
 
     get '/expenses/:id/edit' do
         redirect?
-        @expense = Expense.find(params[:id])
+        @expense = Expense.find_by(params[:id])
         redirect '/expenses' if !current_user.expenses.include?(@expense)
         
         erb :'/expenses/update'
     end
 
     patch '/expenses/:id' do
-        expense = Expense.find(params[:id])
+        expense = Expense.find_by(params[:id])
         expense.update(
             name: params[:name],
             category: params[:category],
@@ -52,7 +52,7 @@ class ExpenseController < ApplicationController
     end
 
     delete '/expenses/:id' do
-        Expense.find(params[:id]).destroy
+        Expense.find_by(params[:id]).destroy
 
         redirect '/expenses'
     end
