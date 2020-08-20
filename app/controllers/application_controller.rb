@@ -27,6 +27,11 @@ class ApplicationController < Sinatra::Base
       !!session[:user_id]
     end
 
+    def login(user)
+      session[:user_id] = user.id
+      redirect '/dashboard'
+    end
+
     def current_user
       User.find_by(id: session[:user_id])
     end

@@ -8,8 +8,7 @@ class UserController < ApplicationController
         user = User.find_by(email: params[:email])
 
         if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
-            redirect '/dashboard'
+            login(user)
         else
             redirect '/login'
         end
@@ -22,8 +21,7 @@ class UserController < ApplicationController
     post '/signup' do
         user = User.new(params)
         if !User.find_by(username: params[:username]) && !User.find_by(email: params[:email]) && user.save
-            session[:user_id] = user.id
-            redirect '/dashboard'
+            login(user)
         else
             erb :signup
         end
