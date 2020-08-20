@@ -52,7 +52,6 @@ class ItemController < ApplicationController
     end
 
     delete '/items/:id' do
-        binding.pry
         Item.find_by(id: params[:id]).destroy
 
         redirect '/items'
