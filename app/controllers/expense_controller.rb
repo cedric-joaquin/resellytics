@@ -30,15 +30,15 @@ class ExpenseController < ApplicationController
     end
 
     patch '/expenses/:id' do
-        expense = Expense.find_by(id: params[:id])
-        expense.update(
-            name: params[:name],
-            category: params[:category],
-            cost: params[:cost],
-            purchased_from: params[:purchased_from],
-            purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
-        )
-
+        if expense = current_user.expenses.find_by(id: params[:id])
+            expense.update(
+                name: params[:name],
+                category: params[:category],
+                cost: params[:cost],
+                purchased_from: params[:purchased_from],
+                purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
+            )
+        end
         redirect "/expenses/#{expense.id}"
     end
 
@@ -51,7 +51,9 @@ class ExpenseController < ApplicationController
     end
 
     delete '/expenses/:id' do
-        Expense.find_by(id: params[:id]).destroy
+        if expense = current_user.expenses.find_by(id: params[:id])
+            expense.destroy
+        end
 
         redirect '/expenses'
     end

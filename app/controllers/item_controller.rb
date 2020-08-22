@@ -31,15 +31,16 @@ class ItemController < ApplicationController
     end
 
     patch '/items/:id' do
-        item = Item.find_by(id: params[:id])
-        item.update(
-            name: params[:name],
-            brand: params[:brand],
-            size: params[:size],
-            cost: params[:cost],
-            purchased_from: params[:purchased_from],
-            purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
-        )
+        if item = current_user.items.find_by(id: params[:id])
+            item.update(
+                name: params[:name],
+                brand: params[:brand],
+                size: params[:size],
+                cost: params[:cost],
+                purchased_from: params[:purchased_from],
+                purchase_date: params[:purchase_date].to_date.strftime('%B %d, %Y')
+            )
+        end
         redirect "/items/#{item.id}"
     end
 
@@ -52,7 +53,9 @@ class ItemController < ApplicationController
     end
 
     delete '/items/:id' do
-        Item.find_by(id: params[:id]).destroy
+        if item = current_user.items.find_by(id: params[:id])
+            item.destroy
+        end
 
         redirect '/items'
     end
