@@ -1,4 +1,3 @@
-<% if !@items.empty?%>
     <header class="navbar navbar-expand-md navbar-dark bg-dark">
                 <a class="navbar-brand" href="/inventory">Inventory (Total: $<%= sprintf("%.2f", Item.total(session[:user_id])) %>)</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,21 +8,34 @@
                 <a href="/expenses/new"><button type="button" class="btn btn-info float-right">Add Item</button></a>
                 </div>
     </header>
+<% if !@items.empty?%>
 
-<div class="container">
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">Purchase Date</th>
+            <th scope="col">Item</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Size</th>
+            <th scope="col">Cost</th>
+            <th scope="col">Purchased From</th>
+        </tr>
+    </thead>
+    <tbody>
     <% @items.each do |item| %>
-        <a href="/items/<%= item.id %>">
-            <div class="item">
-                <h2><%= item.name %></h2>
-                <p><h3><%= item.brand %></h3></p>
-                <p>Size <%= item.size %></p>
-                <p>Cost: $<%= sprintf("%.2f",item.cost) %></p>
-            </div>
-        </a>
+        <tr>
+            <td><a href="/items/<%= item.id %>"><%= item.purchase_date %></a></td>
+            <td><a href="/items/<%= item.id %>"><%= item.name %></a></td>
+            <td><a href="/items/<%= item.id %>"><%= item.brand %></a></td>
+            <td><a href="/items/<%= item.id %>"><%= item.size %></a></td>
+            <td><a href="/items/<%= item.id %>">$<%= sprintf("%.2f",item.cost) %></a></td>
+            <td><a href="/items/<%= item.purchased_from %></a></td>
+        </tr>
     <% end %>
-</div>
+    </tbody>
+</table>
+
 
 <% else %>
-<h2>Inventory (Total: $0)</h2>
 <p>No items added, please <a href="/items/new">click here</a> to add an item.</p>
 <% end %>
