@@ -17,8 +17,6 @@
             <label for="purchase_date">Purchase Date</label>
             <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @expense.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
             <button class="btn btn-primary" type="submit">Update Expense</button>
-            <input type="hidden" name="_method" value="delete">
-            <button class="btn btn-warning" type="delete">Delete Expense</button>
         </form>
     </div>
 </div>

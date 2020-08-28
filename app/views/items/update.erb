@@ -7,20 +7,18 @@
         <form method="POST" action="/items/<%= @item.id %>">
             <input type="hidden" id="hidden" name="_method" value="patch"> 
             <label for="name">Item Name</label>
-            <input type="text" class="form-control" name="name" id="name" required="true" value="<%= @item.name %>"></p>
+            <p><input type="text" class="form-control" name="name" id="name" required="true" value="<%= @item.name %>"></p>
             <label for="brand">Item Brand</label>
-            <input type="text" class="form-control" name="brand" id="brand" required="true" value="<%= @item.brand %>"></p>
+            <p><input type="text" class="form-control" name="brand" id="brand" required="true" value="<%= @item.brand %>"></p>
             <label for="size">Size</label>
-            <input type="text" class="form-control" name="size" id="size" required="true" value="<%= @item.size %>"></p>
+            <p><input type="text" class="form-control" name="size" id="size" required="true" value="<%= @item.size %>"></p>
             <label for="cost">Item Cost ($)</label>
-            <input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true" value="<%= @item.cost %>"></p>
+            <p><input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true" value="<%= @item.cost %>"></p>
             <label for="purchased_from">Purchased From</label>
-            <input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" value="<%= @item.purchased_from %>"></p>
+            <p><input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" value="<%= @item.purchased_from %>"></p>
             <label for="purchase_date">Purchase Date</label>
-            <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @item.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
+            <p><input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @item.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
             <button class="btn btn-primary" type="submit">Update Item</button>
-            <input type="hidden" class="form-control" name="_method" value="delete">
-            <button class="btn btn-warning" type="delete">Delete Item</button>
         </form>
     </div>
 </div>
