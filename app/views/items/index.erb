@@ -1,6 +1,6 @@
 <header class="navbar navbar-expand-md navbar-dark bg-dark">
             <a class="navbar-brand" href="/inventory">Inventory (Total: $<%= sprintf("%.2f", Item.total(session[:user_id])) %>)</a>
-            <a href="/expenses/new"><button type="button" class="btn btn-info float-right">Add Item</button></a>
+            <a href="/items/new"><button type="button" class="btn btn-info float-right">Add Item</button></a>
 </header>
 
 <% if !@items.empty?%>

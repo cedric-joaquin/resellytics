@@ -1,27 +1,26 @@
-<div class="nav">
-    <h2><%= @item.name %></h2>
-    <a href="/logout">Log Out</a>
-    <a href="/expenses">Expenses</a>
-    <a href="/items">Inventory</a>
-    <a href="/dashboard">Dashboard</a>
+<header class="navbar navbar-expand-md navbar-dark bg-dark">
+            <span class="navbar-brand"><%= @item.name %></span>
+</header>
+
+<div class="p-3">
+    <div class="form-group">
+        <form method="POST" action="/items/<%= @item.id %>">
+            <input type="hidden" id="hidden" name="_method" value="patch"> 
+            <label for="name">Item Name</label>
+            <input type="text" class="form-control" name="name" id="name" required="true" value="<%= @item.name %>"></p>
+            <label for="brand">Item Brand</label>
+            <input type="text" class="form-control" name="brand" id="brand" required="true" value="<%= @item.brand %>"></p>
+            <label for="size">Size</label>
+            <input type="text" class="form-control" name="size" id="size" required="true" value="<%= @item.size %>"></p>
+            <label for="cost">Item Cost ($)</label>
+            <input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true" value="<%= @item.cost %>"></p>
+            <label for="purchased_from">Purchased From</label>
+            <input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" value="<%= @item.purchased_from %>"></p>
+            <label for="purchase_date">Purchase Date</label>
+            <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @item.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
+            <button class="btn btn-primary" type="submit">Update Item</button>
+            <input type="hidden" class="form-control" name="_method" value="delete">
+            <button class="btn btn-warning" type="delete">Delete Item</button>
+        </form>
+    </div>
 </div>
-<form method="POST" action="/items/<%= @item.id %>">
-<input type="hidden" id="hidden" name="_method" value="patch"> 
-<p><label for="name">Item Name</label>
-<input type="text" name="name" id="name" required="true" value="<%= @item.name %>"></p>
-<p><label for="brand">Item Brand</label>
-<input type="text" name="brand" id="brand" required="true" value="<%= @item.brand %>"></p>
-<p><label for="size">Size</label>
-<input type="text" name="size" id="size" required="true" value="<%= @item.size %>"></p>
-<p><label for="cost">Item Cost ($)</label>
-<input type="number" step="0.01" name="cost" id="cost" required="true" value="<%= @item.cost %>"></p>
-<p><label for="purchased_from">Purchased From</label>
-<input type="text" name="purchased_from" id="purchased_from" required="true" value="<%= @item.purchased_from %>"></p>
-<p><label for="purchase_date">Purchase Date</label>
-<input type="date" name="purchase_date" id="purchase_date" required="true" value="<%= @item.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
-<input type="submit" value="Update Item">
-</form>
-<form method="POST" action="/items/<%= @item.id %>">
-<input type="hidden" name="_method" value="delete">
-<input type="submit" value="Delete Item">
-</form>

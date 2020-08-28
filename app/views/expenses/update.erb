@@ -5,22 +5,20 @@
 <div class="p-3">
     <div class="form-group">
         <form method="POST" action="/expenses/<%= @expense.id %>">
-        <input type="hidden" id="hidden" name="_method" value="patch"> 
-        <label for="name">Expense Name</label>
-        <input type="text" class="form-control" name="name" id="name" required="true" value="<%= @expense.name %>"></p>
-        <label for="brand">Category</label>
-        <input type="text" class="form-control" name="category" id="category" required="true" value="<%= @expense.category %>"></p>
-        <label for="cost">Expense Cost ($)</label>
-        <input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true" value="<%= @expense.cost %>"></p>
-        <label for="purchased_from">Purchased From</label>
-        <input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" value="<%= @expense.purchased_from %>"></p>
-        <label for="purchase_date">Purchase Date</label>
-        <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @expense.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
-        <button class="btn btn-primary" type="submit">Update Expense</button>
-        <input type="hidden" name="_method" value="delete">
-        <button class="btn btn-warning" type="delete">Delete Expense</button>
+            <input type="hidden" id="hidden" name="_method" value="patch"> 
+            <label for="name">Expense Name</label>
+            <input type="text" class="form-control" name="name" id="name" required="true" value="<%= @expense.name %>"></p>
+            <label for="brand">Category</label>
+            <input type="text" class="form-control" name="category" id="category" required="true" value="<%= @expense.category %>"></p>
+            <label for="cost">Expense Cost ($)</label>
+            <input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true" value="<%= @expense.cost %>"></p>
+            <label for="purchased_from">Purchased From</label>
+            <input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" value="<%= @expense.purchased_from %>"></p>
+            <label for="purchase_date">Purchase Date</label>
+            <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= @expense.purchase_date.to_date.strftime('%Y-%m-%d') %>"></p>
+            <button class="btn btn-primary" type="submit">Update Expense</button>
+            <input type="hidden" name="_method" value="delete">
+            <button class="btn btn-warning" type="delete">Delete Expense</button>
         </form>
-        <!-- <form method="POST" action="/expenses/<%= @expense.id %>">
-        </form> -->
     </div>
 </div>
