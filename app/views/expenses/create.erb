@@ -1,20 +1,21 @@
-<div class="nav">
-    <h2>Add an Expense</h2>
-    <a href="/logout">Log Out</a>
-    <a href="/expenses">Expenses</a>
-    <a href="/items">Inventory</a>
-    <a href="/dashboard">Dashboard</a>
+<header class="navbar navbar-expand-md navbar-dark bg-dark">
+            <span class="navbar-brand">Add an Expense</span>
+</header>
+
+<div class="p-3">
+    <div class="form-group">
+        <form method="POST" action="/expenses">
+        <label for="name">Expense Name</label>
+        <input type="text" class="form-control" name="name" id="name" required="true"></p>
+        <label for="category">Category</label>
+        <input type="text" class="form-control" name="category" id="category" required="true" ></p>
+        <label for="cost">Cost ($)</label>
+        <input type="number" class="form-control" step="0.01" name="cost" id="cost" required="true"></p>
+        <label for="purchased_from">Purchased From</label>
+        <input type="text" class="form-control" name="purchased_from" id="purchased_from" required="true" ></p>
+        <label for="purchase_date">Purchase Date</label>
+        <input type="date" class="form-control" name="purchase_date" id="purchase_date" required="true" value="<%= DateTime.now.strftime('%Y-%m-%d')%>"></p>
+        <button class="btn btn-primary" type="submit">Add Expense</button>
+        </form>
+    </div>
 </div>
-<form method="POST" action="/expenses">
-<p><label for="name"></label>
-<input type="text" name="name" id="name" required="true" placeholder="Expense Name"></p>
-<p><label for="category"></label>
-<input type="text" name="category" id="category" required="true" placeholder="Category"></p>
-<p><label for="cost"></label>
-<input type="number" step="0.01" name="cost" id="cost" required="true" placeholder="Expense Cost ($)"></p>
-<p><label for="purchased_from"></label>
-<input type="text" name="purchased_from" id="purchased_from" required="true" placeholder="Purchased From"></p>
-<p><label for="purchase_date"></label>
-<input type="date" name="purchase_date" id="purchase_date" required="true" value="<%= DateTime.now.strftime('%Y-%m-%d')%>"></p>
-<input type="submit" value="Add Expense">
-</form>

@@ -1,11 +1,18 @@
-<div class="nav">
-    <h2><%= @expense.name %></h2>
-    <a href="/logout">Log Out</a>
-    <a href="/expenses">Expenses</a>
-    <a href="/items">Inventory</a>
-    <a href="/dashboard">Dashboard</a>
+<header class="navbar navbar-expand-md navbar-dark bg-dark">
+            <span class="navbar-brand"><%= @expense.name %></span>
+</header>
+
+<div class="container-fluid pt-1 pl-3">
+    <div class="card" style="width: 18rem">
+        <div class="card-body">
+            <h5><%= @expense.category %></h5>
+            <p>Cost: $<%= sprintf("%.2f", @expense.cost) %></p>
+            <p>Purchased from <strong><%= @expense.purchased_from %></strong> on <strong><%= @expense.purchase_date %></strong></p>
+            <form method="POST" action="/expenses/<%= @expense.id %>">
+                <a href="/items/<%= @expense.id %>/edit" class="btn btn-primary">Edit</a>
+                <input type="hidden" class="form-control" name="_method" value="delete">
+                <button class="btn btn-warning" type="delete">Delete</button>
+            </form>
+        </div>
+    </div>
 </div>
-<h3><%= @expense.category %></h3><br>
-<p>Cost: $<%= sprintf("%.2f", @expense.cost) %></p>
-<p>Purchased from <strong><%= @expense.purchased_from %></strong> on <strong><%= @expense.purchase_date %></strong></p>
-<h3><a href="/expenses/<%= @expense.id %>/edit">Edit Expense</a>

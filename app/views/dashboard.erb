@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="nav">
     <h2>Welcome, <%= @user.username %></h2>
     <a href="/logout">Log Out</a>
@@ -8,3 +9,8 @@
 <li><a href="/items">Inventory:</a> $<%= sprintf("%.2f", total("items")) %></li>
 <li><a href="/expenses">Expenses:</a> $<%= sprintf("%.2f", total("expenses")) %></li>
 </ul><br>
+=======
+<a href="/items">Inventory:</a> $<%= Item.total(session[:user_id]).to_s %>
+<a href="/expenses">Expenses:</a> $<%= Expense.total(session[:user_id]).to_s %>
+
+>>>>>>> styling
